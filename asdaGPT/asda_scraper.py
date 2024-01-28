@@ -9,7 +9,7 @@ import urllib
 
 def scrape_asda(recipe_ingredients):
     options = Options()
-    options.headless = False
+    options.headless = True
     options.add_argument("--window-size=1920,1200")
 
     print("installing ChromeDriverManager")
