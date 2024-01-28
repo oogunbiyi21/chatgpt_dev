@@ -1,15 +1,15 @@
 openapi: 3.0.1
 info:
-    title: Stock Quote
-    description: Get price and volume information for a given stock.
+    title: Recipe shopping list
+    description: Get shopping list of items for a requested recipe
     version: "v1"
 servers:
     - url: [YOUR_DOMAIN, must be HTTPS]
 paths:
     /stock:
         get:
-            operationId: getStockData
-            summary: Retrieves the price and volume information for a given stock symbol.
+            operationId: getIngredientData
+            summary: Retrieves the product name and link to product page for each required item
             parameters:
                 - in: query
                   name: symbol
