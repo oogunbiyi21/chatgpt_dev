@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory
-from asda_scraper import scrape_asda  # Import your scraper function
+from asda_scraper_multithread import scrape_asda  # Import your scraper function
 
 app = Flask(__name__)
 
@@ -38,9 +38,9 @@ def serve_ai_plugin():
                                mimetype='application/json',)
 
 
-@app.route('/openapi.yaml')
+@app.route('/swagger.yaml')
 def serve_openapi_yaml():
-    return send_from_directory('.', 'openapi.yaml', mimetype='text/yaml')
+    return send_from_directory('.', 'swagger.yaml', mimetype='text/yaml')
 
 
 if __name__ == "__main__":

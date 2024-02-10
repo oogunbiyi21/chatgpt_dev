@@ -48,6 +48,7 @@ def scrape_asda(recipe_ingredients):
             # Extract product link
             product_link = product_name_element.get_attribute("href")
             product_links.append(product_link)
+            print(product_link)
 
             # Count product
             product_count += 1
@@ -65,13 +66,12 @@ def scrape_asda(recipe_ingredients):
                                       'product_name': product_names,
                                       'product_link': product_links})
 
-        # Print or process the DataFrame as needed
-        print(ingredient_df)
 
         all_data_list.append(ingredient_data)
         all_data_df = all_data_df.append(ingredient_df, ignore_index=True)
 
     all_data_df.to_csv("asda_ingredients.csv")
+    print(all_data_df)
     driver.quit()
     return all_data_list
 
