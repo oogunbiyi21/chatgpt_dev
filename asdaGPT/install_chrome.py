@@ -3,7 +3,7 @@ import os
 
 
 def install_chrome():
-    # Define the path for the bash script
+    # Define the path for tls -l install_chrome.shhe bash script
     bash_script_path = "./install_chrome.sh"
 
     # Make the script executable
