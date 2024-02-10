@@ -9,6 +9,7 @@ import urllib
 
 def scrape_asda(recipe_ingredients):
     options = Options()
+    options.add_argument("--headless")
     options.headless = True
     options.add_argument("--window-size=1920,1200")
 
