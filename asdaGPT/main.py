@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, send_from_directory
 from asda_scraper_multithread import scrape_asda  # Import your scraper function
+from install_chrome import install_chrome
+import socket
+import os
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
@@ -49,4 +51,13 @@ def health_check():
     return '', 200
 
 if __name__ == "__main__":
+    if os.environ.get('REMOTE_SERVER') == 1:
+        print(f"REMOTE SERVER = {os.environ.get('REMOTE_SERVER')}")
+        print("remote session")
+        # Install Chrome before starting the app
+        print("installing chrome")
+        install_chrome()
+        print("chrome installed!")
+    else:
+        print("local session")
     app.run(host='0.0.0.0', port=81)
