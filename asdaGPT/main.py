@@ -51,7 +51,7 @@ def health_check():
     return '', 200
 
 if __name__ == "__main__":
-    if os.environ.get('REMOTE_SERVER') == 1:
+    if os.environ.get('REMOTE_SERVER') == "1":
         print(f"REMOTE SERVER = {os.environ.get('REMOTE_SERVER')}")
         print("remote session")
         # Install Chrome before starting the app
