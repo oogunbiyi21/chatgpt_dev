@@ -1,7 +1,6 @@
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import chromedriver_autoinstaller
 import time
 import os
 import pandas as pd
@@ -10,14 +9,16 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def scrape_ingredient(ingredient):
-    options = Options()
-    options.headless = True
-    options.add_argument("--window-size=1920,1200")
-    options.add_argument('--disable-dev-shm-usage')
+    # options = Options()
+    # options.headless = True
+    # options.add_argument("--window-size=1920,1200")
+    # options.add_argument('--disable-dev-shm-usage')
     print(f"Scraping {ingredient}")
     print("installing ChromeDriverManager")
-    chromedriver_autoinstaller.install()
-    driver = webdriver.Chrome(options=options)
+
+    hub_url = "http://my-selenium-grid-driver:4444/wd/hub"
+    driver = webdriver.Remote(command_executor=hub_url, options=webdriver.ChromeOptions())
+    print("ChromeDriver version:", driver.capabilities['chrome']['chromedriverVersion'])
     print("Driver ready!")
 
     base_url = "https://groceries.asda.com/search/"

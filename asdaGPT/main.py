@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, send_from_directory
-from asda_scraper_multithread import scrape_asda  # Import your scraper function
-from install_chrome import install_chrome
+from asda_scraper_multithread import scrape_asda 
 import socket
 import os
 
@@ -18,7 +17,7 @@ def scrape():
         if ingredients:
             ingredients_list = [ingredient.strip() for ingredient in ingredients.split(',')]
 
-            # Call your scraper function
+            # Call scraper function
             scraped_data = scrape_asda(ingredients_list)
 
             return render_template('result.html', data=scraped_data)
@@ -27,7 +26,7 @@ def scrape():
         ingredients = request.form.get('ingredients')
         ingredients_list = [ingredient.strip() for ingredient in ingredients.split(',')]
 
-        # Call your scraper function
+        # Call scraper function
         scraped_data = scrape_asda(ingredients_list)
 
         return render_template('result.html', data=scraped_data)
@@ -54,10 +53,6 @@ if __name__ == "__main__":
     if os.environ.get('REMOTE_SERVER') == "1":
         print(f"REMOTE SERVER = {os.environ.get('REMOTE_SERVER')}")
         print("remote session")
-        # Install Chrome before starting the app
-        print("installing chrome")
-        install_chrome()
-        print("chrome installed!")
     else:
         print("local session")
     app.run(host='0.0.0.0', port=81)
